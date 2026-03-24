@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institutional Analysis: HRC Financial Review | T-CLEAR</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #161625;
+  --bg-card: #1c1c30;
+  --bg-card-alt: #1a1a2e;
+  --gold: #e8a838;
+  --gold-dim: #c4882a;
+  --gold-glow: rgba(232,168,56,0.15);
+  --text-primary: #e0ddd5;
+  --text-secondary: #9a978f;
+  --text-muted: #6b6860;
+  --red: #c0392b;
+  --green-muted: #5a8a6a;
+  --border: #2a2a40;
+  --border-gold: rgba(232,168,56,0.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg-primary);
+  color:var(--text-primary);
+  line-height:1.7;
+  font-size:15px;
+}
+.container {
+  max-width:900px;
+  margin:0 auto;
+  padding:40px 24px 80px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  text-align:center;
+  margin-bottom:48px;
+  padding-bottom:32px;
+  border-bottom:1px solid var(--border);
+}
+.section-header h1 {
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(28px,4vw,38px);
+  color:var(--gold);
+  margin-bottom:12px;
+  letter-spacing:-0.02em;
+}
+.section-header .subtitle {
+  font-size:15px;
+  color:var(--text-secondary);
+  max-width:680px;
+  margin:0 auto;
+  line-height:1.6;
+}
+
+/* ── Methodology Note ── */
+.method-note {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-left:3px solid var(--gold);
+  padding:20px 24px;
+  margin-bottom:40px;
+  font-size:13.5px;
+  color:var(--text-secondary);
+  line-height:1.65;
+}
+.method-note strong { color:var(--text-primary); }
+.method-note a { color:var(--gold); text-decoration:none; }
+.method-note a:hover { text-decoration:underline; }
+
+/* ── Subsection ── */
+.subsection {
+  margin-bottom:48px;
+}
+.subsection h2 {
+  font-family:'DM Serif Display',serif;
+  font-size:22px;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.subsection h3 {
+  font-size:16px;
+  font-weight:700;
+  color:var(--text-primary);
+  margin-bottom:12px;
+  margin-top:28px;
+}
+.subsection p {
+  margin-bottom:14px;
+  color:var(--text-primary);
+  font-size:15px;
+}
+.subsection .note {
+  color:var(--text-secondary);
+  font-size:13.5px;
+}
+
+/* ── Tables ── */
+.data-table-wrapper {
+  overflow-x:auto;
+  margin:20px 0 24px;
+  border:1px solid var(--border);
+  border-radius:4px;
+}
+table.data-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:13.5px;
+}
+table.data-table thead th {
+  background:var(--bg-card);
+  color:var(--gold);
+  font-weight:700;
+  padding:10px 14px;
+  text-align:left;
+  border-bottom:2px solid var(--border-gold);
+  white-space:nowrap;
+  font-size:12.5px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+table.data-table tbody td {
+  padding:9px 14px;
+  border-bottom:1px solid var(--border);
+  color:var(--text-primary);
+  vertical-align:top;
+}
+table.data-table tbody tr:nth-child(even) { background:rgba(255,255,255,0.015); }
+table.data-table tbody tr:hover { background:rgba(232,168,56,0.04); }
+td.num { text-align:right; font-variant-numeric:tabular-nums; }
+td.neg { color:var(--red); }
+td.pos { color:var(--green-muted); }
+td.em { font-weight:700; color:var(--gold); }
+td.footnote-cell { font-size:12px; color:var(--text-muted); }
+.table-source {
+  font-size:11.5px;
+  color:var(--text-muted);
+  margin-top:6px;
+  line-height:1.5;
+}
+.table-source a { color:var(--gold-dim); text-decoration:none; }
+.table-source a:hover { text-decoration:underline; }
+
+/* ── Stat Row ── */
+.stat-row {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+  margin:24px 0;
+}
+.stat-card {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  padding:20px;
+  text-align:center;
+}
+.stat-card .stat-val {
+  font-family:'DM Serif Display',serif;
+  font-size:28px;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+.stat-card .stat-label {
+  font-size:12.5px;
+  color:var(--text-secondary);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+
+/* ── Highlight Box ── */
+.highlight-box {
+  background:var(--bg-card);
+  border:1px solid var(--border-gold);
+  padding:24px 28px;
+  margin:24px 0;
+  position:relative;
+}
+.highlight-box::before {
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:var(--gold);
+}
+.highlight-box .hl-title {
+  font-weight:700;
+  color:var(--gold);
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  margin-bottom:10px;
+}
+.highlight-box p {
+  margin-bottom:10px;
+  font-size:14.5px;
+  color:var(--text-primary);
+  line-height:1.65;
+}
+.highlight-box p:last-child { margin-bottom:0; }
+
+/* ── Collapsible ── */
+.collapsible {
+  margin:20px 0;
+}
+.collapsible-toggle {
+  width:100%;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  color:var(--text-primary);
+  padding:14px 20px;
+  text-align:left;
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:background 0.2s;
+}
+.collapsible-toggle:hover { background:var(--bg-card-alt); }
+.collapsible-toggle .arrow {
+  font-size:12px;
+  color:var(--gold);
+  transition:transform 0.3s;
+}
+.collapsible-toggle.open .arrow { transform:rotate(180deg); }
+.collapsible-content {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease;
+  border:1px solid var(--border);
+  border-top:none;
+  background:var(--bg-secondary);
+}
+.collapsible-content .inner {
+  padding:20px;
+}
+
+/* ── Chart container ── */
+.chart-wrap {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  padding:20px;
+  margin:20px 0;
+  position:relative;
+}
+.chart-wrap canvas {
+  max-height:220px;
+  min-height:180px;
+}
+.chart-title {
+  font-size:13px;
+  font-weight:700;
+  color:var(--text-secondary);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  margin-bottom:12px;
+}
+
+/* ── Timeline ── */
+.timeline {
+  position:relative;
+  padding-left:28px;
+  margin:20px 0;
+}
+.timeline::before {
+  content:'';
+  position:absolute;
+  left:8px;top:0;bottom:0;
+  width:2px;
+  background:var(--border);
+}
+.timeline-item {
+  position:relative;
+  margin-bottom:20px;
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.timeline-item:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.timeline-item::before {
+  content:'';
+  position:absolute;
+  left:-24px;top:6px;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--gold);
+  border:2px solid var(--bg-primary);
+}
+.timeline-item.tl-zero::before {
+  background:var(--border);
+}
+.timeline-item .tl-year {
+  font-weight:700;
+  color:var(--gold);
+  font-size:14px;
+  margin-bottom:4px;
+}
+.timeline-item.tl-zero .tl-year {
+  color:var(--text-muted);
+}
+.timeline-item .tl-text {
+  font-size:14px;
+  color:var(--text-primary);
+  line-height:1.6;
+}
+.timeline-item .tl-text .amt {
+  font-weight:700;
+}
+
+/* ── Closing ── */
+.closing {
+  background:var(--bg-card);
+  border:1px solid var(--border-gold);
+  padding:32px;
+  margin-top:48px;
+  text-align:center;
+}
+.closing h2 {
+  font-family:'DM Serif Display',serif;
+  font-size:20px;
+  color:var(--gold);
+  margin-bottom:16px;
+}
+.closing p {
+  font-size:15px;
+  color:var(--text-primary);
+  max-width:700px;
+  margin:0 auto 12px;
+  line-height:1.7;
+}
+.closing p:last-child { margin-bottom:0; }
+
+/* ── Six-Year Summary Table ── */
+.sixyear-table tbody tr.row-red td { color:var(--red); font-weight:700; }
+.sixyear-table tbody tr.row-red td:first-child { color:var(--red); }
+
+/* ── Mega Stat ── */
+.mega-stat {
+  margin:32px 0;
+  padding:4px;
+  background:linear-gradient(135deg, var(--border-gold), var(--border) 40%, var(--border-gold));
+  border-radius:6px;
+}
+.mega-stat-inner {
+  background:var(--bg-primary);
+  border-radius:4px;
+  padding:40px 32px;
+  text-align:center;
+}
+.mega-number {
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(64px,12vw,96px);
+  color:var(--red);
+  line-height:1;
+  margin-bottom:8px;
+}
+.mega-unit {
+  font-size:0.5em;
+  vertical-align:super;
+  color:var(--red);
+}
+.mega-label {
+  font-size:20px;
+  font-weight:700;
+  color:var(--text-primary);
+  margin-bottom:8px;
+}
+.mega-sublabel {
+  font-size:13.5px;
+  color:var(--text-muted);
+  max-width:560px;
+  margin:0 auto;
+  line-height:1.5;
+}
+
+/* ── Responsive ── */
+@media(max-width:640px) {
+  .stat-row { grid-template-columns:1fr; }
+  table.data-table { font-size:12.5px; }
+  table.data-table thead th, table.data-table tbody td { padding:7px 10px; }
+  .container { padding:24px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- HEADER -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1>Institutional Analysis</h1>
+  <p class="subtitle">A financial review of the Human Rights Campaign, the organization that publishes the most widely cited data on fatal violence against transgender Americans. All figures sourced to IRS Form 990 filings via ProPublica Nonprofit Explorer.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- METHODOLOGY NOTE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="method-note">
+  <strong>Source Note:</strong> Every financial figure in this section is drawn from public IRS Form 990 filings for <a href="https://projects.propublica.org/nonprofits/organizations/521243457" target="_blank">HRC Inc (EIN 52-1243457)</a> and <a href="https://projects.propublica.org/nonprofits/organizations/521481896" target="_blank">HRC Foundation (EIN 52-1481896)</a>, accessed through ProPublica Nonprofit Explorer and HRC's own <a href="https://www.hrc.org/about/financial-reports" target="_blank">financial reports page</a>. Layoff reporting is sourced to <a href="https://www.advocate.com/news/human-rights-campaign-layoffs" target="_blank">The Advocate (Feb. 4, 2025)</a>. No claims are made about intent. The numbers are presented as filed. Program staff salaries, materials, and overhead are not captured in Schedule I individual grant figures; this analysis examines what reached individuals directly, not total programmatic spending.
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 1. COMBINED FINANCIAL OVERVIEW -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>1. Combined Financial Overview</h2>
+  <p>HRC operates as two linked entities: HRC Inc (a 501(c)(4) lobbying organization) and HRC Foundation (a 501(c)(3) charitable arm). They share staff, office space, and leadership through cost-sharing agreements documented in each entity's Schedule J. The combined picture:</p>
+
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Fiscal Year</th>
+        <th>Combined Revenue</th>
+        <th>Combined Expenses</th>
+        <th>Net</th>
+        <th>Combined Net Assets</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FY2020</td>
+        <td class="num">$59.7M</td>
+        <td class="num">$61.2M</td>
+        <td class="num neg">-$1.5M</td>
+        <td class="num">$40.3M</td>
+      </tr>
+      <tr>
+        <td>FY2021</td>
+        <td class="num">$65.6M</td>
+        <td class="num">$49.0M</td>
+        <td class="num pos">+$16.6M</td>
+        <td class="num">$56.95M</td>
+      </tr>
+      <tr>
+        <td>FY2022</td>
+        <td class="num">$58.5M</td>
+        <td class="num">$58.5M</td>
+        <td class="num neg">-$0.0M</td>
+        <td class="num">$55.5M</td>
+      </tr>
+      <tr>
+        <td>FY2023</td>
+        <td class="num">$74.9M</td>
+        <td class="num">$78.0M</td>
+        <td class="num neg">-$3.1M</td>
+        <td class="num">$57.1M</td>
+      </tr>
+      <tr>
+        <td>FY2024</td>
+        <td class="num">$67.2M</td>
+        <td class="num">$79.9M</td>
+        <td class="num neg">-$12.7M</td>
+        <td class="num">$44.4M</td>
+      </tr>
+      <tr>
+        <td>FY2025</td>
+        <td class="num">$50.1M*</td>
+        <td class="num">$53.3M*</td>
+        <td class="num neg">-$3.2M*</td>
+        <td class="num">$10.9M*</td>
+      </tr>
+      <tr style="border-top:2px solid var(--border-gold)">
+        <td style="font-weight:700;color:var(--gold)">Six-Year Total</td>
+        <td class="num em"></td>
+        <td class="num em">$379.8M</td>
+        <td class="num"></td>
+        <td class="num"></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="table-source">*FY2025: HRC Inc only. HRC Foundation FY2025 990 not yet filed as of this writing. Six-year combined expenses with Foundation FY2025 estimate: ~$407.6M.<br>
+  Sources: <a href="https://projects.propublica.org/nonprofits/organizations/521243457" target="_blank">ProPublica (HRC Inc)</a> · <a href="https://projects.propublica.org/nonprofits/organizations/521481896" target="_blank">ProPublica (HRC Foundation)</a></p>
+
+  <p>Between FY2021 and FY2025, combined net assets declined from $56.95M to $44.43M (FY2024, the last year with both filings). HRC Inc alone reported net assets of $10.93M in FY2025, down from $23.19M in FY2024. Revenue peaked in FY2023 at $74.9M, while expenses grew faster, producing sustained operating deficits from FY2023 onward.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 2. WHERE THE MONEY GOES -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>2. Where the Money Goes</h2>
+  <p>The Part IX functional expense statement from each entity's most recent filing reveals how HRC allocates its resources.</p>
+
+  <h3>HRC Inc -- FY2025 Part IX (Total: $53,257,144)</h3>
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr><th>Line Item</th><th>Amount</th><th>% of Total</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Program services</td><td class="num">$36,427,779</td><td class="num">68.4%</td></tr>
+      <tr><td>Management &amp; general</td><td class="num">$9,512,480</td><td class="num">17.9%</td></tr>
+      <tr><td>Fundraising</td><td class="num">$7,316,885</td><td class="num">13.7%</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="collapsible">
+    <button class="collapsible-toggle" onclick="toggleCollapsible(this)">
+      <span>HRC Inc -- Full Expense Breakdown</span>
+      <span class="arrow">&#9660;</span>
+    </button>
+    <div class="collapsible-content">
+      <div class="inner">
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Other salaries &amp; wages</td><td class="num">$15,283,630</td></tr>
+            <tr><td>Other professional fees (Line 11g)</td><td class="num">$8,105,089</td></tr>
+            <tr><td>Conferences, conventions, meetings</td><td class="num">$5,561,031</td></tr>
+            <tr><td>Office expenses</td><td class="num">$3,850,165</td></tr>
+            <tr><td>Executive compensation</td><td class="num">$2,923,836</td></tr>
+            <tr><td>Information technology</td><td class="num">$2,336,142</td></tr>
+            <tr><td>Advertising &amp; promotion</td><td class="num">$1,904,663</td></tr>
+            <tr><td>Travel</td><td class="num">$1,877,748</td></tr>
+            <tr><td>Occupancy</td><td class="num">$1,819,855</td></tr>
+            <tr><td>Membership premiums</td><td class="num">$1,333,059</td></tr>
+            <tr><td>Direct response fundraising</td><td class="num">$1,282,265</td></tr>
+            <tr><td>Professional fundraising fees</td><td class="num">$790,156</td></tr>
+            <tr><td>Grants to domestic organizations</td><td class="num em">$514,697</td></tr>
+            <tr><td>Grants to domestic individuals</td><td class="num em">$234,645</td></tr>
+            <tr><td>Lobbying</td><td class="num">$124,451</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:12px">Source: HRC Inc Form 990, Part IX, FY2025 filing (EIN 52-1243457)</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>HRC Foundation -- FY2025 Part IX (Total: $27,843,843)</h3>
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr><th>Line Item</th><th>Amount</th><th>% of Total</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Program services</td><td class="num">$18,259,803</td><td class="num">65.6%</td></tr>
+      <tr><td>Management &amp; general</td><td class="num">$6,638,672</td><td class="num">23.8%</td></tr>
+      <tr><td>Fundraising</td><td class="num">$2,945,368</td><td class="num">10.6%</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="collapsible">
+    <button class="collapsible-toggle" onclick="toggleCollapsible(this)">
+      <span>HRC Foundation -- Full Expense Breakdown</span>
+      <span class="arrow">&#9660;</span>
+    </button>
+    <div class="collapsible-content">
+      <div class="inner">
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Other salaries &amp; wages</td><td class="num">$12,404,900</td></tr>
+            <tr><td>Other professional fees (Line 11g)</td><td class="num">$1,804,580</td></tr>
+            <tr><td>Officer/key employee compensation</td><td class="num">$1,798,142</td></tr>
+            <tr><td>Grants to domestic organizations</td><td class="num em">$1,538,357</td></tr>
+            <tr><td>&emsp;-- of which to HRC Inc for lobbying</td><td class="num" style="color:var(--text-muted)">$1,000,000</td></tr>
+            <tr><td>Conferences, conventions, meetings</td><td class="num">$1,040,806</td></tr>
+            <tr><td>Travel</td><td class="num">$780,241</td></tr>
+            <tr><td>Grants to domestic individuals</td><td class="num em">$252,922</td></tr>
+            <tr><td>Professional fundraising fees</td><td class="num">$184,208</td></tr>
+            <tr><td>Grants to foreign individuals</td><td class="num">$42,100</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:12px">Source: HRC Foundation Form 990, Part IX, FY2025 filing (EIN 52-1481896). Schedule J confirms first-class air travel and companion travel for the president, with companion travel specified in the employment contract.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 3. WHAT LEFT THE BUILDING -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>3. What Left the Building</h2>
+  <p>Before examining trans-specific spending, a more fundamental question: of all the money HRC took in, how much reached anyone outside the organization?</p>
+  <p>Form 990 Part IX requires nonprofits to report grants and assistance paid to outside organizations and individuals. These are the only line items that represent money leaving HRC and reaching someone else. Everything else -- salaries, consultants, conferences, travel, rent, IT, advertising -- stays inside the operation.</p>
+
+  <h3>HRC Foundation -- FY2025: What went out the door</h3>
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead><tr><th>Grants Line Item</th><th>Amount</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Grants to domestic orgs (Part IX, Line 1)</td><td class="num">$1,538,357</td><td style="font-size:12px;color:var(--text-muted)">$1,000,000 of this went to HRC Inc</td></tr>
+      <tr><td>&emsp;-- Grants to orgs <em>other than HRC Inc</em></td><td class="num em">$538,357</td><td></td></tr>
+      <tr><td>Grants to domestic individuals (Part IX, Line 2)</td><td class="num">$252,922</td><td></td></tr>
+      <tr><td>Grants to foreign individuals (Part IX, Line 3)</td><td class="num">$42,100</td><td></td></tr>
+      <tr style="border-top:2px solid var(--border-gold)">
+        <td style="font-weight:700;color:var(--gold)">Total reaching external recipients</td>
+        <td class="num em">$833,379</td>
+        <td style="font-size:12px;color:var(--text-muted)">3.0% of $27.8M total expenses</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>HRC Inc -- FY2025: What went out the door</h3>
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead><tr><th>Grants Line Item</th><th>Amount</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Grants to domestic orgs (Part IX, Line 1)</td><td class="num">$514,697</td><td></td></tr>
+      <tr><td>Grants to domestic individuals (Part IX, Line 2)</td><td class="num">$234,645</td><td></td></tr>
+      <tr style="border-top:2px solid var(--border-gold)">
+        <td style="font-weight:700;color:var(--gold)">Total reaching external recipients</td>
+        <td class="num em">$749,342</td>
+        <td style="font-size:12px;color:var(--text-muted)">1.4% of $53.3M total expenses</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- THE BIG NUMBER -->
+  <div class="mega-stat">
+    <div class="mega-stat-inner">
+      <div class="mega-number">98<span class="mega-unit">%</span></div>
+      <div class="mega-label">of every dollar stayed inside HRC</div>
+      <div class="mega-sublabel">$79.5 million internal &bull; $1.58 million to all external recipients &bull; FY2025 combined</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">FY2025 Combined: Where $81.1 Million Went</div>
+    <canvas id="donutChart"></canvas>
+  </div>
+
+  <h3>It wasn't just one year</h3>
+  <p>The Foundation's own Part IX filings show this pattern held every single year. The budget nearly doubled from $13.8M to $27.8M between FY2021 and FY2025. The amount reaching individuals barely moved. The amount reaching trans individuals collapsed.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">HRC Foundation: Total Expenses vs. All Individual Grants vs. Trans Grants (FY2020-FY2025)</div>
+    <canvas id="sixYearChart"></canvas>
+  </div>
+
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th>Foundation Expenses</th>
+        <th>All Individual Grants</th>
+        <th>% to Individuals</th>
+        <th>Trans/TJI Grants</th>
+        <th>Grant to HRC Inc</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>2020</td><td class="num">$17,559,291</td><td class="num">$127,171</td><td class="num">0.72%</td><td class="num" style="color:var(--red)">$0</td><td class="num">$975,000</td></tr>
+      <tr><td>2021</td><td class="num">$13,796,546</td><td class="num">$33,197</td><td class="num">0.24%</td><td class="num" style="color:var(--red)">$33,197</td><td class="num">$820,000</td></tr>
+      <tr><td>2022</td><td class="num">$18,275,696</td><td class="num">$107,971</td><td class="num">0.59%</td><td class="num" style="color:var(--red)">$75,181</td><td class="num">$820,000</td></tr>
+      <tr><td>2023</td><td class="num">$24,173,135</td><td class="num">$193,313</td><td class="num">0.80%</td><td class="num" style="color:var(--red)">$0</td><td class="num">$997,357</td></tr>
+      <tr><td>2024</td><td class="num">$28,023,257</td><td class="num">$367,133</td><td class="num">1.31%</td><td class="num" style="color:var(--red)">$62,915</td><td class="num">$1,000,000</td></tr>
+      <tr><td>2025</td><td class="num">$27,843,843</td><td class="num">$252,922</td><td class="num">0.91%</td><td class="num" style="color:var(--red)">$11,000</td><td class="num">$1,000,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="table-source">The Foundation's budget doubled. The lobbying grant to HRC Inc was rock-steady. The trans grants rose, vanished, reappeared merged with another program, and collapsed. The column that never wavered tells you what was always the priority.</p>
+
+  <h3>What the $79.5 million in internal spending bought</h3>
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead><tr><th>Internal Category</th><th>Amount</th><th>Multiple of All External Grants</th></tr></thead>
+    <tbody>
+      <tr><td>Staff salaries (both entities)</td><td class="num">$32,985,308</td><td class="num" style="color:var(--text-muted)">21x</td></tr>
+      <tr><td>Professional fees &amp; consultants</td><td class="num">$9,909,669</td><td class="num" style="color:var(--text-muted)">6.3x</td></tr>
+      <tr><td>Conferences, conventions, meetings</td><td class="num">$6,601,837</td><td class="num" style="color:var(--text-muted)">4.2x</td></tr>
+      <tr><td>Executive/officer compensation</td><td class="num">$4,721,978</td><td class="num" style="color:var(--text-muted)">3.0x</td></tr>
+      <tr><td>Office expenses</td><td class="num">$3,850,165</td><td class="num" style="color:var(--text-muted)">2.4x</td></tr>
+      <tr><td>Travel</td><td class="num">$2,657,989</td><td class="num" style="color:var(--text-muted)">1.7x</td></tr>
+      <tr><td>IT systems</td><td class="num">$2,336,142</td><td class="num" style="color:var(--text-muted)">1.5x</td></tr>
+      <tr><td>Advertising &amp; promotion</td><td class="num">$1,904,663</td><td class="num" style="color:var(--text-muted)">1.2x</td></tr>
+      <tr><td>Occupancy / rent</td><td class="num">$1,819,855</td><td class="num" style="color:var(--text-muted)">1.2x</td></tr>
+      <tr><td>Membership premiums</td><td class="num">$1,333,059</td><td class="num" style="color:var(--text-muted)">0.8x</td></tr>
+      <tr><td>Professional fundraising</td><td class="num">$974,364</td><td class="num" style="color:var(--text-muted)">0.6x</td></tr>
+      <tr><td>Direct response fundraising</td><td class="num">$1,282,265</td><td class="num" style="color:var(--text-muted)">0.8x</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="table-source">Sources: HRC Inc Form 990 Part IX, FY2025 (EIN 52-1243457) and HRC Foundation Form 990 Part IX, FY2025 (EIN 52-1481896). "Multiple" column = internal category divided by $1,582,721 in total external grants (net of $1M Foundation-to-Inc internal transfer). Staff salaries = Inc Line 7 ($15,283,630) + Foundation Line 7 ($12,404,900) + employee benefits, pension, payroll taxes allocated proportionally. Executive/officer compensation = Inc Line 5 ($2,923,836) + Foundation Line 5 ($1,798,142).</p>
+
+  <div class="highlight-box">
+    <div class="hl-title">A note on advocacy nonprofits</div>
+    <p>HRC would argue that advocacy organizations don't primarily give grants -- they hire staff who lobby, write reports, file lawsuits, and rate institutions. That's structurally true of the advocacy nonprofit model. The ACLU, NAACP, and similar organizations also spend heavily on staff and infrastructure.</p>
+    <p>The question is not whether advocacy nonprofits should employ staff. The question is whether an organization spending $9.9 million on consultants and $6.6 million on conferences is primarily doing advocacy work, or primarily sustaining an organization. Conferences alone were <strong>4.2 times all external grants combined.</strong> Professional fees were <strong>6.3 times all external grants.</strong> These are not the ratios of an organization maximizing impact. They are the ratios of an organization maximizing itself.</p>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Every Internal Category vs. All External Grants ($1.58M) -- FY2025 Combined</div>
+    <canvas id="comparisonChart"></canvas>
+  </div>
+
+  <p class="note" style="margin-top:16px">Note: The Foundation's FY2024 filing lists BEELINE DESIGN AND PRODUCTIONS LLC of Las Vegas, NV as its fifth-highest-paid independent contractor at $197,759 for "Event Production."</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 3b. FOUNDATION-TO-INC PIPELINE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>3b. The Foundation-to-Inc Pipeline</h2>
+  <p>The HRC Foundation is a 501(c)(3) -- the tax-deductible arm. HRC Inc is a 501(c)(4) -- the lobbying arm. Donors who give to the Foundation receive a tax deduction. The Foundation then sends money to HRC Inc.</p>
+
+  <h3>Six Years of Foundation Grants to HRC Inc</h3>
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead><tr><th>Fiscal Year</th><th>Grant to HRC Inc</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>FY2020</td><td class="num">$975,000</td><td>Lobbying (Schedule I, Part II)</td></tr>
+      <tr><td>FY2021</td><td class="num">$820,000</td><td>Lobbying (Schedule I, Part II)</td></tr>
+      <tr><td>FY2022</td><td class="num">$820,000</td><td>Lobbying (Schedule I, Part II)</td></tr>
+      <tr><td>FY2023</td><td class="num">$997,357</td><td>Lobbying (Schedule I, Part II)</td></tr>
+      <tr><td>FY2024</td><td class="num">$1,000,000</td><td>Lobbying (Schedule I, Part II)</td></tr>
+      <tr><td>FY2025</td><td class="num">$1,000,000</td><td>Lobbying (Schedule I, Part II)</td></tr>
+      <tr style="border-top:2px solid var(--border-gold)"><td style="font-weight:700;color:var(--gold)">Six-Year Total</td><td class="num em">$5,612,357</td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hl-title">What the Balance Sheet Shows</div>
+    <p>The Foundation's FY2024 balance sheet (Part X, line 25) reports <strong>$7,440,551</strong> in liabilities classified as "Due to Human Rights Campaign" -- money the Foundation owed to HRC Inc at year-end.</p>
+    <p>In addition, the Foundation made a <strong>$1,000,000 direct grant</strong> to HRC Inc for lobbying (Schedule I, Part II) -- the same amount as every other recent year.</p>
+    <p>Combined, the Foundation's financial obligations to HRC Inc ($8.4M) represented <strong>30% of the Foundation's total expenses</strong> ($28.0M) that year.</p>
+  </div>
+
+  <p>Of the Foundation's $1,647,992 in grants to domestic organizations in FY2024, the single largest recipient was HRC Inc at $1,000,000. That leaves $647,992 in grants to all other domestic organizations combined. The next largest grant was $45,000 to the National Black Justice Coalition for polling research.</p>
+
+  <p class="note">The Foundation's sole listed fundraising event in FY2024, "Chef's for Equality," generated $354,988 in gross receipts but cost $282,823 in direct expenses (venue $181K, food $48K, entertainment $2K, other $52K) -- a net loss of $87,235 after subtracting the $159,400 in contributions. (Schedule G, Part II.)</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 4. TRANS-SPECIFIC GRANTS: SIX-YEAR TIMELINE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>4. Trans-Specific Grants: The Six-Year Record</h2>
+  <p>HRC Foundation's Schedule I, Part III discloses grants to domestic individuals by program category. This is where any trans-specific individual grant spending would appear.</p>
+
+  <h3>What is the Transgender Justice Initiative (TJI)?</h3>
+  <p>The Transgender Justice Initiative was HRC Foundation's dedicated program for direct support of transgender individuals. According to HRC's own 990 narratives, TJI led "economic empowerment programs, capacity-building initiatives, community engagement efforts, and public safety education campaigns that combat the discrimination faced by transgender people." It was the organizational home for small grants to trans individuals, the Elevate and Activate fellowship programs for trans women of color, community job fairs, and the annual National Justice &amp; Advocacy Summit.</p>
+  <p>TJI is relevant to this analysis because it was HRC's primary vehicle for putting money directly into trans people's hands -- the one program where individual grants, measured in dollars reaching actual people, can be tracked through Schedule I filings. It is separate from HRC's broader programmatic work (the Corporate Equality Index, Welcoming Schools, the Fatal Violence report itself) where spending is absorbed into staff salaries and overhead and cannot be isolated on the 990.</p>
+  <p>The following data is extracted directly from each year's filing, covering every available fiscal year from FY2020 through FY2025:</p>
+
+  <div class="timeline">
+    <div class="timeline-item tl-zero">
+      <div class="tl-year">FY2020 (Apr 2019 -- Mar 2020)</div>
+      <div class="tl-text">
+        <strong>No TJI line item.</strong> The Transgender Justice Initiative is described in the Part III narrative as "an innovative new program" but had not yet produced individual grants. Schedule I lists only two categories: "Volunteer Travel Support" (125 recipients, $112,271) and "Fellow Stipends and Student Scholarships" (17 recipients, $14,900). Total individual grants: $127,171. Trans-specific individual grants: <span class="amt">$0</span>.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-year">FY2021 (Apr 2020 -- Mar 2021)</div>
+      <div class="tl-text">
+        The first TJI individual grants appear. Schedule I lists a single category: "Transgender Justice Initiative Grants": <span class="amt">32 recipients, $33,197</span>. This is the only individual grant category listed this year (COVID-era budget; total Foundation expenses dropped to $13.8M). The Part III narrative describes the TJI small grants program distributing "$30,000 to 30 advocates" and the first National Justice &amp; Advocacy Summit.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-year">FY2022 (Apr 2021 -- Mar 2022)</div>
+      <div class="tl-text">
+        TJI grants peak. Schedule I lists three categories. "Support for Participation in Transgender Justice Initiative Programs": <span class="amt">67 recipients, $75,181</span>. "Support for Participation in HIV &amp; Health Equity Programs": 16 recipients, $16,025. "Travel Support for Program Participation": 25 recipients, $16,765. Total individual grants: $107,971.
+      </div>
+    </div>
+    <div class="timeline-item tl-zero">
+      <div class="tl-year">FY2023 (Apr 2022 -- Mar 2023)</div>
+      <div class="tl-text">
+        The Transgender Justice Initiative line item <strong>disappears from Schedule I</strong>. Only two generic categories remain: "Travel Support for Program Participation" (130 recipients, $129,111) and "Stipends for Participation in HRCF Programs" (71 recipients, $64,202). Total individual grants: $193,313. The Schedule O narrative describes TJI's Lyft Rides grant program ($80K, routed through organizational partners) but <strong>no trans-specific individual grants are broken out</strong>. Trans-specific individual grants: <span class="amt">$0</span>.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-year">FY2024 (Apr 2023 -- Mar 2024)</div>
+      <div class="tl-text">
+        The trans line reappears, now merged with HIV &amp; Health Equity into a single category: "HIV &amp; Health Equity and Trans Justice Initiative Project Grants": <span class="amt">14 recipients, $62,915</span>. The trans-only portion is not broken out. Alongside: Travel support (126 recipients, $215,993) and Stipends (83 recipients, $88,225). Total individual grants: $367,133. Schedule O describes TJI "distributing $75,000 in benefits to 55 trans and nonbinary organizations, individuals, and projects" -- but only $62,915 appears on the individual grants line.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-year">FY2025 (Apr 2024 -- Mar 2025)</div>
+      <div class="tl-text">
+        The same combined line item collapses 83% from its FY2024 level: "HIV &amp; Health Equity and Trans Justice Initiative Project Grants": <span class="amt">11 recipients, $11,000</span> -- an average of $1,000 per person. Alongside: Travel support (118 recipients, $189,672) and Stipends (30 recipients, $52,250). Total individual grants: $252,922. Five months after this fiscal year ended, HRC eliminated all trans-focused programs entirely.
+      </div>
+    </div>
+  </div>
+
+  <!-- SIX-YEAR SUMMARY TABLE -->
+  <h3>Six-Year Summary: Trans Individual Grants vs. Foundation Totals</h3>
+  <div class="data-table-wrapper">
+  <table class="data-table sixyear-table">
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th>Trans/TJI Grants</th>
+        <th>Recipients</th>
+        <th>All Individual Grants</th>
+        <th>Foundation Total Expenses</th>
+        <th>Trans as % of Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>2020</td><td class="num">$0</td><td class="num">0</td><td class="num">$127,171</td><td class="num">$17,559,291</td><td class="num">0.000%</td></tr>
+      <tr><td>2021</td><td class="num">$33,197</td><td class="num">32</td><td class="num">$33,197</td><td class="num">$13,796,546</td><td class="num">0.241%</td></tr>
+      <tr><td>2022</td><td class="num">$75,181</td><td class="num">67</td><td class="num">$107,971</td><td class="num">$18,275,696</td><td class="num">0.411%</td></tr>
+      <tr><td>2023</td><td class="num">$0</td><td class="num">0</td><td class="num">$193,313</td><td class="num">$24,173,135</td><td class="num">0.000%</td></tr>
+      <tr><td>2024</td><td class="num">$62,915</td><td class="num">14</td><td class="num">$367,133</td><td class="num">$28,023,257</td><td class="num">0.225%</td></tr>
+      <tr><td>2025</td><td class="num">$11,000</td><td class="num">11</td><td class="num">$252,922</td><td class="num">$27,843,843</td><td class="num">0.039%</td></tr>
+      <tr class="row-red" style="border-top:2px solid var(--border-gold)">
+        <td style="font-weight:700">Total</td>
+        <td class="num" style="font-weight:700">$182,293</td>
+        <td class="num" style="font-weight:700">124</td>
+        <td class="num">$1,081,707</td>
+        <td class="num">$129,671,768</td>
+        <td class="num" style="font-weight:700">0.141%</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="table-source">Sources: HRC Foundation Form 990, Schedule I Part III and Part IX, FY2020-FY2025. "Trans/TJI Grants" = line items explicitly identified as Transgender Justice Initiative or combined HIV &amp; TJI grants. FY2023 $0 reflects removal of TJI line from Schedule I; some trans-related spending may have been routed through organizational grants not captured here.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Six Years of Trans Individual Grants ($182K) vs. Single-Year HRC Spending Categories</div>
+    <canvas id="transGrantsChart"></canvas>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hl-title">The Trajectory</div>
+    <p>Trans/TJI individual grants: <strong>$0</strong> (FY2020) &#8594; <strong>$33,197</strong> (FY2021) &#8594; <strong>$75,181</strong> (FY2022, peak) &#8594; <strong>$0 broken out</strong> (FY2023) &#8594; <strong>$62,915</strong> combined with HIV (FY2024) &#8594; <strong>$11,000</strong> (FY2025) &#8594; <strong>programs eliminated</strong> (Feb 2025).</p>
+    <p>Over six years, the Foundation sent <strong>$5,612,357 to HRC Inc</strong> for lobbying. In the same period, it sent <strong>$182,293 to trans individuals</strong>. The lobbying pipeline was 31 times the trans grants.</p>
+    <p>In FY2025, the combined HRC entities spent approximately $81.1 million. Of that, <strong>$11,000</strong> went to trans-specific individual grants -- representing <strong>0.014%</strong> of total spending.</p>
+    <p>The president's total compensation ($784,577) was <strong>71 times</strong> the entire trans individual grants budget.</p>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Trans/TJI Individual Grants by Fiscal Year</div>
+    <canvas id="tjiTimelineChart"></canvas>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 5. FOUNDATION EXPENSES BY YEAR -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>5. Foundation Expenses by Year</h2>
+  <p>Selected Part IX line items from HRC Foundation 990s across all six fiscal years:</p>
+
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="min-width:160px">Category</th>
+        <th>FY2020</th>
+        <th>FY2021</th>
+        <th>FY2022</th>
+        <th>FY2023</th>
+        <th>FY2024</th>
+        <th>FY2025</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total expenses</td>
+        <td class="num">$17.6M</td>
+        <td class="num">$13.8M</td>
+        <td class="num">$18.3M</td>
+        <td class="num">$24.2M</td>
+        <td class="num">$28.0M</td>
+        <td class="num">$27.8M</td>
+      </tr>
+      <tr>
+        <td>Grants to HRC Inc</td>
+        <td class="num">$975K</td>
+        <td class="num">$820K</td>
+        <td class="num">$820K</td>
+        <td class="num">$997K</td>
+        <td class="num">$1.0M</td>
+        <td class="num">$1.0M</td>
+      </tr>
+      <tr style="color:var(--red);font-weight:700">
+        <td style="color:var(--red)">Trans individual grants</td>
+        <td class="num">$0</td>
+        <td class="num">$33K</td>
+        <td class="num">$75K</td>
+        <td class="num">$0</td>
+        <td class="num">$63K</td>
+        <td class="num">$11K</td>
+      </tr>
+      <tr>
+        <td>All individual grants</td>
+        <td class="num">$127K</td>
+        <td class="num">$33K</td>
+        <td class="num">$108K</td>
+        <td class="num">$193K</td>
+        <td class="num">$367K</td>
+        <td class="num">$253K</td>
+      </tr>
+      <tr>
+        <td>Officer/key comp</td>
+        <td class="num">$804K</td>
+        <td class="num">$550K</td>
+        <td class="num">$595K</td>
+        <td class="num">$688K</td>
+        <td class="num">$1.2M</td>
+        <td class="num">$1.8M</td>
+      </tr>
+      <tr>
+        <td>Other salaries</td>
+        <td class="num">$7.4M</td>
+        <td class="num">$6.6M</td>
+        <td class="num">$7.8M</td>
+        <td class="num">$9.7M</td>
+        <td class="num">$11.1M</td>
+        <td class="num">$12.4M</td>
+      </tr>
+      <tr>
+        <td>Conferences</td>
+        <td class="num">$1.2M</td>
+        <td class="num">$312K</td>
+        <td class="num">$1.0M</td>
+        <td class="num">$1.5M</td>
+        <td class="num">$1.6M</td>
+        <td class="num">$1.0M</td>
+      </tr>
+      <tr>
+        <td>Travel</td>
+        <td class="num">$742K</td>
+        <td class="num">$12K</td>
+        <td class="num">$345K</td>
+        <td class="num">$723K</td>
+        <td class="num">$808K</td>
+        <td class="num">$780K</td>
+      </tr>
+      <tr>
+        <td>Professional fees (11g)</td>
+        <td class="num">$1.1M</td>
+        <td class="num">$1.4M</td>
+        <td class="num">$1.2M</td>
+        <td class="num">$2.5M</td>
+        <td class="num">$2.6M</td>
+        <td class="num">$2.7M</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="table-source">All figures: Form 990 Part IX, HRC Foundation, EIN 52-1481896. FY2021 travel ($12K) reflects COVID-era operations. Rounded to nearest $1K or $100K as shown.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 6. EXECUTIVE COMPENSATION -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>6. Executive Compensation</h2>
+
+  <h3>President: Kelley Robinson</h3>
+  <p>Total compensation as reported on HRC Inc's FY2025 filing: $784,577 ($734,995 base + $49,582 other). The Foundation's Schedule J shows an additional $382,434 reimbursed from the Foundation to HRC Inc as Robinson's cost-share. Schedule J confirms first-class air travel and companion travel for the president, with companion travel specified in the employment contract.</p>
+
+  <h3>Cost-Sharing: Foundation to HRC Inc (FY2025)</h3>
+  <div class="data-table-wrapper">
+  <table class="data-table">
+    <thead><tr><th>Name</th><th>Title</th><th>Foundation Share</th></tr></thead>
+    <tbody>
+      <tr><td>Kelley Robinson</td><td>President</td><td class="num">$382,434</td></tr>
+      <tr><td>Orlando Gonzales</td><td>SVP Programs (laid off Feb 2025)</td><td class="num">$393,100</td></tr>
+      <tr><td>James Rinefierd</td><td>Treasurer</td><td class="num">$231,093</td></tr>
+      <tr><td>Jay Brown</td><td>Asst. Vice President</td><td class="num">$161,419</td></tr>
+      <tr><td>Nicole Greenidge-Hoskins</td><td>Secretary</td><td class="num">$172,168</td></tr>
+      <tr><td>Stephanie Osborn</td><td>--</td><td class="num">$170,886</td></tr>
+      <tr><td>Andrea Green</td><td>--</td><td class="num">$160,900</td></tr>
+      <tr><td>Herrin Hopper</td><td>--</td><td class="num">$126,142</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Source: HRC Foundation Form 990, Schedule J Part III, FY2025 filing. HRC Inc's FY2025 filing lists 18 key employees earning over $200,000 each.</p>
+
+  <h3>Former President: Alphonso David</h3>
+  <p>Alphonso David was removed as HRC president in 2021 following involvement in the Cuomo harassment scandal. The FY2024 filing -- three years after his departure -- still reports $309,000 in compensation to David.</p>
+
+  <div class="collapsible">
+    <button class="collapsible-toggle" onclick="toggleCollapsible(this)">
+      <span>FY2020-FY2021: Officer Cost-Sharing Detail</span>
+      <span class="arrow">&#9660;</span>
+    </button>
+    <div class="collapsible-content">
+      <div class="inner">
+        <p class="note" style="margin-bottom:12px"><strong>FY2021 (Schedule J):</strong> Foundation reimbursed HRC Inc for:</p>
+        <table class="data-table">
+          <thead><tr><th>Name</th><th>Title</th><th>Foundation Share</th></tr></thead>
+          <tbody>
+            <tr><td>Alphonso David</td><td>President</td><td class="num">$60,642</td></tr>
+            <tr><td>Joni Madison</td><td>Vice President</td><td class="num">$71,297</td></tr>
+            <tr><td>Jay Brown</td><td>Asst. Vice President</td><td class="num">$158,546</td></tr>
+            <tr><td>James Rinefierd</td><td>Treasurer</td><td class="num">$99,950</td></tr>
+            <tr><td>Nicole Greenidge-Hoskins</td><td>Secretary</td><td class="num">$95,872</td></tr>
+            <tr><td>Molly Meegan</td><td>Asst. Secretary</td><td class="num">$64,037</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:16px"><strong>FY2020 (Schedule J):</strong> Foundation reimbursed HRC Inc for:</p>
+        <table class="data-table">
+          <thead><tr><th>Name</th><th>Title</th><th>Foundation Share</th></tr></thead>
+          <tbody>
+            <tr><td>Chad Griffin</td><td>President (until 08/2019)</td><td class="num">$114,325</td></tr>
+            <tr><td>Alphonso David</td><td>President (as of 08/2019)</td><td class="num">$99,774</td></tr>
+            <tr><td>Jay Brown</td><td>Asst. Vice President</td><td class="num">$207,208</td></tr>
+            <tr><td>Joni Madison</td><td>Vice President</td><td class="num">$100,737</td></tr>
+            <tr><td>James Rinefierd</td><td>Treasurer</td><td class="num">$111,163</td></tr>
+            <tr><td>Nicole Greenidge-Hoskins</td><td>Secretary</td><td class="num">$105,044</td></tr>
+            <tr><td>Molly Meegan</td><td>Asst. Secretary</td><td class="num">$63,340</td></tr>
+            <tr><td>Darrin Hurwitz</td><td>Asst. Secretary (until 04/2019)</td><td class="num">$2,142</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:8px">Source: HRC Foundation Schedule J, FY2020 and FY2021 filings. All officers reported $0 in direct compensation from the Foundation; all compensation paid through HRC Inc cost-sharing arrangement.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 7. FEBRUARY 2025 LAYOFFS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>7. February 2025: Layoffs</h2>
+  <p>On February 4, 2025, The Advocate reported that HRC cut approximately 20% of its workforce -- roughly 50 employees -- reducing staff from approximately 230 to 180. The cuts included:</p>
+
+  <div class="highlight-box">
+    <div class="hl-title">Programs Eliminated</div>
+    <p><strong>Complete elimination of trans-focused programs.</strong></p>
+    <p><strong>Complete elimination of youth programs.</strong></p>
+    <p>Elimination of the internal DEI team leader position.</p>
+    <p>Laid-off employees were offered non-disparagement agreements in exchange for an additional month of severance.</p>
+  </div>
+
+  <p>The elimination of trans-focused programs at HRC is documented by both The Advocate's reporting and HRC's own subsequent organizational statements. This occurred while HRC continued to position itself as the nation's primary tracker and advocate regarding fatal violence against transgender Americans.</p>
+  <p class="table-source">Sources: <a href="https://www.advocate.com/news/human-rights-campaign-layoffs" target="_blank">The Advocate, Feb. 4, 2025</a> &middot; <a href="https://www.influencewatch.org/non-profit/human-rights-campaign/" target="_blank">InfluenceWatch</a></p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 8. DATA ACCURACY -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <h2>8. Data Accuracy</h2>
+  <p>This study's methodology involved independently verifying every case on HRC's annual reports of fatal violence against transgender people from 2015 through 2024 -- 304 cases -- against court records, booking photos, and local news coverage. The verification process documented recurring factual errors in HRC's published data, including misidentified suspect races, cases listed with incorrect jurisdictions, and individuals counted who did not meet the report's own stated inclusion criteria. These errors are documented case by case in the corresponding <a href="https://dont-shoot-the-data.github.io/TCLEAR/" style="color:var(--gold)">year files</a> of this study.</p>
+  <p>These are not allegations. They are documented, verifiable discrepancies between what HRC published and what the underlying court and news records show.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CLOSING -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="closing">
+  <h2>The Question This Section Asks</h2>
+  <p>HRC's annual reports on fatal violence against transgender people are cited by the White House, Congress, major news organizations, and academic researchers as authoritative data. Those reports form the basis of policy proposals, funding decisions, and public understanding of who is killing transgender Americans and why.</p>
+  <p>This section does not allege fraud or wrongdoing. It presents, from HRC's own IRS filings, how the organization that produces that data allocates its resources: <strong>98 cents of every dollar stayed inside HRC</strong> in FY2025 -- paying salaries, consultants, conferences, travel, and organizational infrastructure. Of the 2% that did reach external recipients, <strong>$182,293 over six fiscal years</strong> can be traced to direct trans individual grants through the Foundation's named Transgender Justice Initiative. The Foundation's grants to its own lobbying arm ($5.6 million) over those same six years were 31 times the trans grants. The president's single-year compensation ($784,577) was 71 times the trans grants budget in FY2025. Then, in February 2025, every trans-focused program was eliminated.</p>
+  <p>The question is not whether HRC committed wrongdoing. The question is whether an organization that spent <strong>$407.6 million combined over six years</strong> while directing <strong>$182,293 in trans individual grants</strong> across that entire period, where 98% of spending sustains itself, should be treated as an authoritative, disinterested source on the subject it claims to lead.</p>
+</div>
+
+</div><!-- /container -->
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+// Collapsible toggle
+function toggleCollapsible(btn) {
+  btn.classList.toggle('open');
+  const content = btn.nextElementSibling;
+  if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+    content.style.maxHeight = '0px';
+  } else {
+    content.style.maxHeight = content.scrollHeight + 'px';
+  }
+}
+
+// Chart defaults
+Chart.defaults.color = '#9a978f';
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.size = 12;
+
+// ── DONUT: 98% Internal vs 2% External ──
+const donutCtx = document.getElementById('donutChart').getContext('2d');
+new Chart(donutCtx, {
+  type: 'doughnut',
+  data: {
+    labels: [
+      'Staff Compensation ($37.7M)',
+      'Professional Fees ($9.9M)',
+      'Conferences ($6.6M)',
+      'Office & IT ($6.2M)',
+      'Travel ($2.7M)',
+      'Occupancy ($1.8M)',
+      'Advertising ($1.9M)',
+      'Fundraising Costs ($2.3M)',
+      'Other Internal ($10.4M)',
+      'ALL External Grants ($1.58M)'
+    ],
+    datasets: [{
+      data: [37707286, 9909669, 6601837, 6186307, 2657989, 1819855, 1904663, 2256629, 10400000, 1582721],
+      backgroundColor: [
+        '#2a2a40', '#33334d', '#3d3d5a', '#474766',
+        '#525273', '#5c5c80', '#66668c', '#707099',
+        '#7a7aa6',
+        '#c0392b'
+      ],
+      borderColor: '#0f0f1a',
+      borderWidth: 2,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          padding: 14,
+          font: { size: 11 },
+          usePointStyle: true,
+          pointStyleWidth: 12,
+          generateLabels: function(chart) {
+            const data = chart.data;
+            return data.labels.map((label, i) => {
+              const isGrants = i === data.labels.length - 1;
+              return {
+                text: label,
+                fillStyle: data.datasets[0].backgroundColor[i],
+                strokeStyle: data.datasets[0].backgroundColor[i],
+                lineWidth: 0,
+                pointStyle: 'rectRounded',
+                fontColor: isGrants ? '#c0392b' : '#9a978f',
+                font: { weight: isGrants ? 'bold' : 'normal', size: isGrants ? 12 : 11 },
+                index: i
+              };
+            });
+          }
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+            const pct = ((ctx.raw / total) * 100).toFixed(1);
+            if (ctx.raw >= 1e6) return ' $' + (ctx.raw / 1e6).toFixed(1) + 'M (' + pct + '%)';
+            return ' $' + (ctx.raw / 1e3).toFixed(0) + 'K (' + pct + '%)';
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── Six-Year Foundation: Expenses vs Grants ──
+const syCtx = document.getElementById('sixYearChart').getContext('2d');
+new Chart(syCtx, {
+  type: 'bar',
+  data: {
+    labels: ['FY2020', 'FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+    datasets: [
+      {
+        label: 'Foundation Total Expenses',
+        data: [17559291, 13796546, 18275696, 24173135, 28023257, 27843843],
+        backgroundColor: 'rgba(232,168,56,0.25)',
+        borderColor: 'rgba(232,168,56,0.5)',
+        borderWidth: 1,
+        borderRadius: 3,
+        order: 3
+      },
+      {
+        label: 'Grant to HRC Inc (Lobbying)',
+        data: [975000, 820000, 820000, 997357, 1000000, 1000000],
+        backgroundColor: 'rgba(232,168,56,0.7)',
+        borderColor: 'rgba(232,168,56,0.9)',
+        borderWidth: 1,
+        borderRadius: 3,
+        order: 2
+      },
+      {
+        label: 'All Individual Grants',
+        data: [127171, 33197, 107971, 193313, 367133, 252922],
+        backgroundColor: 'rgba(154,151,143,0.7)',
+        borderColor: 'rgba(154,151,143,0.9)',
+        borderWidth: 1,
+        borderRadius: 3,
+        order: 1
+      },
+      {
+        label: 'Trans/TJI Grants',
+        data: [0, 33197, 75181, 0, 62915, 11000],
+        backgroundColor: '#c0392b',
+        borderColor: '#e74c3c',
+        borderWidth: 1,
+        borderRadius: 3,
+        order: 0
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          padding: 16,
+          font: { size: 11 },
+          usePointStyle: true,
+          pointStyleWidth: 12
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.raw === 0) return ' ' + ctx.dataset.label + ': $0';
+            if (ctx.raw >= 1e6) return ' ' + ctx.dataset.label + ': $' + (ctx.raw / 1e6).toFixed(1) + 'M';
+            return ' ' + ctx.dataset.label + ': $' + (ctx.raw / 1e3).toFixed(0) + 'K';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false }
+      },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: {
+          callback: function(v) {
+            return '$' + (v / 1e6).toFixed(0) + 'M';
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── Comparison: Internal Categories vs All External Grants ──
+const compCtx = document.getElementById('comparisonChart').getContext('2d');
+new Chart(compCtx, {
+  type: 'bar',
+  data: {
+    labels: [
+      'Staff Salaries',
+      'Professional\nFees',
+      'Conferences',
+      'Executive\nComp',
+      'Office & IT',
+      'Travel',
+      'Advertising',
+      'Occupancy',
+      'ALL External\nGrants'
+    ],
+    datasets: [{
+      data: [32985308, 9909669, 6601837, 4721978, 6186307, 2657989, 1904663, 1819855, 1582721],
+      backgroundColor: [
+        'rgba(232,168,56,0.5)',
+        'rgba(232,168,56,0.5)',
+        'rgba(232,168,56,0.5)',
+        'rgba(232,168,56,0.5)',
+        'rgba(232,168,56,0.5)',
+        'rgba(232,168,56,0.5)',
+        'rgba(232,168,56,0.5)',
+        'rgba(232,168,56,0.5)',
+        '#c0392b'
+      ],
+      borderColor: [
+        'rgba(232,168,56,0.7)',
+        'rgba(232,168,56,0.7)',
+        'rgba(232,168,56,0.7)',
+        'rgba(232,168,56,0.7)',
+        'rgba(232,168,56,0.7)',
+        'rgba(232,168,56,0.7)',
+        'rgba(232,168,56,0.7)',
+        'rgba(232,168,56,0.7)',
+        '#e74c3c'
+      ],
+      borderWidth: 1,
+      borderRadius: 2
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.raw >= 1e6) return '$' + (ctx.raw / 1e6).toFixed(1) + 'M';
+            return '$' + (ctx.raw / 1e3).toFixed(0) + 'K';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: {
+          callback: function(v) {
+            if (v >= 1e6) return '$' + (v/1e6).toFixed(0) + 'M';
+            return '$' + (v/1e3).toFixed(0) + 'K';
+          }
+        }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// ── Trans Grants (6 years) vs HRC single-year spending categories ──
+const tgCtx = document.getElementById('transGrantsChart').getContext('2d');
+new Chart(tgCtx, {
+  type: 'bar',
+  data: {
+    labels: [
+      'Professional Fees\n(1 year, Inc)',
+      'Conferences\n(1 year, combined)',
+      'Executive Comp\n(1 year, combined)',
+      'Travel\n(1 year, combined)',
+      'Trans Grants\n(6 YEARS)'
+    ],
+    datasets: [{
+      data: [8105089, 6601837, 4721978, 2657989, 182293],
+      backgroundColor: [
+        'rgba(232,168,56,0.55)',
+        'rgba(232,168,56,0.55)',
+        'rgba(232,168,56,0.55)',
+        'rgba(232,168,56,0.55)',
+        '#c0392b'
+      ],
+      borderColor: [
+        'rgba(232,168,56,0.8)',
+        'rgba(232,168,56,0.8)',
+        'rgba(232,168,56,0.8)',
+        'rgba(232,168,56,0.8)',
+        '#c0392b'
+      ],
+      borderWidth: 1,
+      borderRadius: 2
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.raw >= 1e6) return '$' + (ctx.raw / 1e6).toFixed(1) + 'M';
+            if (ctx.raw >= 1e3) return '$' + (ctx.raw / 1e3).toFixed(0) + 'K';
+            return '$' + ctx.raw.toLocaleString();
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: {
+          callback: function(v) {
+            if (v >= 1e6) return '$' + (v/1e6).toFixed(0) + 'M';
+            if (v >= 1e3) return '$' + (v/1e3).toFixed(0) + 'K';
+            return '$' + v;
+          }
+        }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// ── TJI Timeline Bar Chart ──
+const tlCtx = document.getElementById('tjiTimelineChart').getContext('2d');
+new Chart(tlCtx, {
+  type: 'bar',
+  data: {
+    labels: ['FY2020', 'FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+    datasets: [{
+      label: 'Trans/TJI Individual Grants',
+      data: [0, 33197, 75181, 0, 62915, 11000],
+      backgroundColor: [
+        'rgba(107,104,96,0.4)',
+        '#c0392b',
+        '#c0392b',
+        'rgba(107,104,96,0.4)',
+        '#c0392b',
+        '#c0392b'
+      ],
+      borderColor: [
+        'rgba(107,104,96,0.6)',
+        '#e74c3c',
+        '#e74c3c',
+        'rgba(107,104,96,0.6)',
+        '#e74c3c',
+        '#e74c3c'
+      ],
+      borderWidth: 1,
+      borderRadius: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.raw === 0) return '$0 (no TJI line item)';
+            return '$' + ctx.raw.toLocaleString();
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false }
+      },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: {
+          callback: function(v) {
+            return '$' + (v/1e3).toFixed(0) + 'K';
+          }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
