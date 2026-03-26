@@ -235,6 +235,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 </style>
 </head>
 <body>
+<script>
+// Strip any #hash from URL so browser doesn't jump to an anchor on load/reload
+if (window.location.hash) history.replaceState(null, '', window.location.pathname);
+</script>
 
 <!-- ████ PANEL 1: TITLE ████ -->
 <div class="panel" id="panel-title">
@@ -243,7 +247,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <p class="title-sub">The Human Rights Campaign claims to be America's leading authority on anti-trans violence. Their IRS filings tell a different story. Every number below comes from public Form 990s filed with the IRS.</p>
     <p class="src" style="margin-top:24px">Source: <a href="https://projects.propublica.org/nonprofits/organizations/521481896">HRC Foundation 990s</a> &bull; <a href="https://projects.propublica.org/nonprofits/organizations/521243457">HRC Inc 990s</a> &bull; ProPublica Nonprofit Explorer</p>
   </div>
-  <a href="#panel-98" class="nav-arrow"><span class="nav-label">Continue</span><span class="nav-chevron">&#8595;</span></a>
+  <a data-target="#panel-98" class="nav-arrow"><span class="nav-label">Continue</span><span class="nav-chevron">&#8595;</span></a>
 </div>
 
 <!-- ████ PANEL 2: THREE BIG NUMBERS ████ -->
@@ -268,7 +272,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <p style="font-size:14px;color:var(--text-dim);margin-top:32px;max-width:520px;margin-left:auto;margin-right:auto">$407.6M is what HRC's two entities (Inc + Foundation) spent combined over six years. The trans grants came from the Foundation half. The ratio held every year. The budget doubled. The grants didn't.</p>
   </div>
 
-  <a href="#panel-timeline" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
+  <a data-target="#panel-timeline" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
 </div>
 
 <!-- ████ PANEL 4: TJI TIMELINE STRIP ████ -->
@@ -312,7 +316,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <p style="font-size:14px;color:var(--text-dim);margin-top:8px">124 people. Combined HRC spending over those same six years: <strong style="color:var(--white)">$407.6 million</strong>. Then every trans program was eliminated.</p>
   </div>
 
-  <a href="#panel-spending" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
+  <a data-target="#panel-spending" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
 </div>
 
 <!-- ████ PANEL 5: WHERE THE MONEY GOES ████ -->
@@ -350,7 +354,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <p style="font-size:13px;color:var(--text-dim);margin-top:16px;max-width:560px;margin-left:auto;margin-right:auto">Conferences alone cost 4x more than all external grants. Consultants cost 6x more. The $1.58M includes grants to outside organizations, individual grants for travel and stipends, HIV program grants, and TJI grants combined. Trans-specific individual grants: $11,000 of the $1.58M.</p>
   </div>
 
-  <a href="#panel-knockouts" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
+  <a data-target="#panel-knockouts" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
 </div>
 
 <!-- ████ PANEL 6: THREE KNOCKOUTS ████ -->
@@ -376,7 +380,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     </div>
   </div>
 
-  <a href="#panel-quotes" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
+  <a data-target="#panel-quotes" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
 </div>
 
 <!-- ████ PANEL 6b: WHAT THEY SAID vs WHAT THEY SPENT ████ -->
@@ -460,7 +464,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <p class="src" style="margin-top:20px">All quotes from HRC's own published pages, verified March 2026. Revenue/expense figures from Form 990 Part I. Trans grant figures from HRC Foundation Schedule I, Part III.</p>
   </div>
 
-  <a href="#panel-compare" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
+  <a data-target="#panel-compare" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
 </div>
 
 <!-- ████ PANEL 7: HORIZONTAL BAR ████ -->
@@ -473,7 +477,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <p class="src">Gold bars: single fiscal year (FY2025) spending categories. Red bar: six fiscal years combined (FY2020-FY2025). Source: Form 990, Part IX.</p>
   </div>
 
-  <a href="#panel-question" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
+  <a data-target="#panel-question" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
 </div>
 
 <!-- ████ PANEL 8: THE QUESTION ████ -->
@@ -579,11 +583,11 @@ new Chart(document.getElementById('compareChart'), {
   }
 });
 
-// Smooth scroll only on nav arrow clicks, not globally
+// Smooth scroll only on nav arrow clicks - no hash in URL ever
 document.querySelectorAll('.nav-arrow').forEach(function(arrow) {
   arrow.addEventListener('click', function(e) {
     e.preventDefault();
-    var target = document.querySelector(this.getAttribute('href'));
+    var target = document.querySelector(this.getAttribute('data-target'));
     if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
 });
