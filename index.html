@@ -578,6 +578,10 @@ new Chart(document.getElementById('compareChart'), {
     }
   }
 });
+
+// Force scroll to top on load
+window.addEventListener('load', () => { setTimeout(() => window.scrollTo(0, 0), 0); });
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 </script>
 </body>
 </html>
