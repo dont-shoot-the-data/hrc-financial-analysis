@@ -268,20 +268,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <p style="font-size:14px;color:var(--text-dim);margin-top:32px;max-width:520px;margin-left:auto;margin-right:auto">$407.6M is what HRC's two entities (Inc + Foundation) spent combined over six years. The trans grants came from the Foundation half. The ratio held every year. The budget doubled. The grants didn't.</p>
   </div>
 
-  <a href="#panel-grants" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
-</div>
-
-<!-- ████ PANEL 3: SIX-YEAR CHART ████ -->
-<div id="panel-grants" class="panel half">
-  <div class="inner">
-    <div class="chart-panel">
-      <div class="chart-panel-title">What Left the Building: Six Years of Foundation Grants</div>
-      <p style="font-size:12px;color:var(--text-dim);margin-bottom:12px;margin-top:-10px">The Foundation's Schedule I tracks where grant money went. The lobbying grant to HRC Inc was rock-steady at ~$1M/year. All individual grants (travel, stipends, HIV, TJI) barely moved. Trans grants rose, vanished, and collapsed.</p>
-      <canvas id="sixYearChart" height="340"></canvas>
-    </div>
-    <p class="src">HRC Foundation Form 990, Part IX &amp; Schedule I, FY2020-FY2025. EIN 52-1481896.</p>
-  </div>
-
   <a href="#panel-timeline" class="nav-arrow"><span class="nav-chevron">&#8595;</span></a>
 </div>
 
@@ -510,91 +496,6 @@ Chart.register(ChartDataLabels);
 Chart.defaults.color = '#6e6b63';
 Chart.defaults.font.family = "'DM Sans',sans-serif";
 Chart.defaults.font.size = 12;
-
-// ── SIX-YEAR FOUNDATION CHART ──
-new Chart(document.getElementById('sixYearChart'), {
-  type: 'bar',
-  data: {
-    labels: ['FY2020','FY2021','FY2022','FY2023','FY2024','FY2025'],
-    datasets: [
-      {
-        label: 'Grant to HRC Inc (Lobbying)',
-        data: [975000, 820000, 820000, 997357, 1000000, 1000000],
-        backgroundColor: 'rgba(212,160,60,0.65)',
-        borderColor: 'rgba(212,160,60,0.85)',
-        borderWidth: 1,
-        borderRadius: 3,
-        order: 2,
-        datalabels: {
-          anchor: 'end', align: 'end', offset: 2,
-          color: '#d4a03c',
-          font: { size: 11, weight: 700 },
-          formatter: v => '$' + (v/1e3).toFixed(0) + 'K'
-        }
-      },
-      {
-        label: 'All Individual Grants',
-        data: [127171, 33197, 107971, 193313, 367133, 252922],
-        backgroundColor: 'rgba(200,197,189,0.45)',
-        borderColor: 'rgba(200,197,189,0.7)',
-        borderWidth: 1,
-        borderRadius: 3,
-        order: 1,
-        datalabels: {
-          anchor: 'end', align: 'end', offset: 2,
-          color: '#9a978f',
-          font: { size: 10 },
-          formatter: v => '$' + (v/1e3).toFixed(0) + 'K'
-        }
-      },
-      {
-        label: 'Trans/TJI Grants',
-        data: [0, 33197, 75181, 0, 62915, 11000],
-        backgroundColor: '#dc3545',
-        borderColor: '#ff4757',
-        borderWidth: 1,
-        borderRadius: 3,
-        order: 0,
-        datalabels: {
-          anchor: 'end', align: 'end', offset: 2,
-          color: '#dc3545',
-          font: { size: 11, weight: 700 },
-          formatter: function(v) {
-            if (v === 0) return '$0';
-            return '$' + (v/1e3).toFixed(0) + 'K';
-          }
-        }
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    layout: { padding: { top: 28 } },
-    plugins: {
-      legend: {
-        position: 'bottom',
-        labels: { padding: 16, usePointStyle: true, pointStyleWidth: 12, font: { size: 11 } }
-      },
-      tooltip: {
-        callbacks: {
-          label: function(ctx) {
-            if (ctx.raw === 0) return ' ' + ctx.dataset.label + ': $0';
-            return ' ' + ctx.dataset.label + ': $' + (ctx.raw/1e3).toFixed(0) + 'K';
-          }
-        }
-      }
-    },
-    scales: {
-      x: { grid: { display: false } },
-      y: {
-        grid: { color: 'rgba(255,255,255,0.04)' },
-        ticks: { callback: v => '$' + (v/1e3).toFixed(0) + 'K' },
-        max: 1200000
-      }
-    }
-  }
-});
 
 // ── COMPARISON HORIZONTAL BAR ──
 new Chart(document.getElementById('compareChart'), {
