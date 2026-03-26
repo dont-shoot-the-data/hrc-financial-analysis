@@ -19,7 +19,7 @@
   --white: #eae8e1;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
 
 /* SECTIONS */
@@ -468,7 +468,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   <div class="inner">
     <div class="chart-panel">
       <div class="chart-panel-title">Six Years of Trans Grants vs. Single-Year HRC Spending</div>
-      <canvas id="compareChart" height="280"></canvas>
+      <canvas id="compareChart" height="280" tabindex="-1"></canvas>
     </div>
     <p class="src">Gold bars: single fiscal year (FY2025) spending categories. Red bar: six fiscal years combined (FY2020-FY2025). Source: Form 990, Part IX.</p>
   </div>
@@ -579,9 +579,14 @@ new Chart(document.getElementById('compareChart'), {
   }
 });
 
-// Force scroll to top on load
-window.addEventListener('load', () => { setTimeout(() => window.scrollTo(0, 0), 0); });
-if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+// Smooth scroll only on nav arrow clicks, not globally
+document.querySelectorAll('.nav-arrow').forEach(function(arrow) {
+  arrow.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 </script>
 </body>
 </html>
